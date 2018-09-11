@@ -1,0 +1,52 @@
+﻿@using Agatha.Helpers
+@using Agatha.Models
+@model WorksModel
+            
+<section class="module">
+    <div class="container">
+        <!-- FILTER -->
+        <div class="row">
+
+            <div class="col-sm-12">
+                <ul id="filters" class="filters font-alt">
+                    <li><a href="#" data-filter="*" class="current">All<sup><small>.@Model.Paintings.Count()</small></sup></a></li>
+                    @foreach(var gallery in Model.Galleries)
+                    {
+                        <li><a href="#" data-filter=".@gallery.Id" class="@gallery.Id">@gallery.Name<sup><small>.@gallery.Count</small></sup></a></li>
+                    }
+                </ul>
+            </div>
+
+        </div>
+        <!-- /FILTER -->
+        <!-- WORKS GRID -->
+        <div class="row">
+
+            <div id="works-grid" class="works-grid works-hover-w">
+
+                <!-- DO NOT DELETE THIS DIV -->
+                <div class="grid-sizer"></div>
+
+                @foreach(var painting in Model.Paintings)
+                {
+                    <div class="work-item @painting.Gallery.Id">
+                        <a href="painting/details/@painting.Painting.Id">
+                            <img src="@painting.Painting.SmallUrl" alt="">
+                            <div class="work-caption font-alt">
+                                <h3 class="work-title">@painting.Painting.Name</h3>
+                                <div class="work-descr">
+                                    @painting.Painting.Description
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                }
+            </div>
+
+        </div>
+        <!-- /WORKS GRID -->
+    </div>
+
+</section>
+<!-- /PORTFOLIO -->
+

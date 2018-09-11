@@ -1,0 +1,41 @@
+﻿@using Agatha.Helpers
+@using Agatha.Models
+@model PaintingDetailsModel
+
+
+<!-- HERO -->
+<section class="module module-parallax bg-light-30" data-background="assets/images/section-13.jpg">
+
+    <!-- HERO TEXT -->
+    <div class="container">
+
+        <div class="row">
+            <div class="col-sm-12 text-center">
+                <img src="@Html.PaintingImageUrl(Model.Painting, "large")" alt="">
+            </div>
+        </div>
+
+        <!-- PROJECT DETAILS -->
+        <div class="row m-t-70">
+
+            <div class="col-md-12">
+                <ul class="project-details m-b-sm-30">
+                    <li class="font-alt">
+                        Title: @Model.Name
+                        @if (!String.IsNullOrEmpty(Model.Description))
+                        {
+                            <li class="font-alt">Description: @Model.Description</li>
+                        }
+                        @if (!String.IsNullOrEmpty(Model.Comment))
+                        {
+                            <li class="font-alt">@Model.Comment</li>
+                        }
+                    </ul>
+            </div>
+        </div>
+        <!-- /PROJECT DETAILS -->
+
+    </div>
+
+</section>
+<!-- /SINGLE PORTFOLIO -->

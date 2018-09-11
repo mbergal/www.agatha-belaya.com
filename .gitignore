@@ -1,0 +1,6 @@
+App_Data/
+.vs/
+bin/
+obj/
+deploy/
+packages/

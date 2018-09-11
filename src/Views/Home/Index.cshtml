@@ -1,0 +1,96 @@
+﻿@model IndexModel
+
+@using Agatha.Helpers
+@using Agatha.Models
+
+
+<!-- HERO -->
+<section id="hero" class="module-hero module-parallax module-full-height bg-light-30" data-background="assets/images/hero.jpg">
+
+    <!-- HERO TEXT -->
+    <div class="hero-caption">
+        <div class="hero-text">
+
+            <h1 class="mh-line-size-1 font-alt m-b-50">Agatha Belaya</h1>
+            <h5 class="mh-line-size-4 font-alt">Oil, graphics, watercolors</h5>
+
+        </div>
+    </div>
+    <!-- /HERO TEXT -->
+
+</section>
+<!-- /HERO -->
+<!-- ABOUT -->
+<section class="module">
+
+    <div class="container">
+
+        <div class="row">
+
+            <!-- ABOUT ARTIST -->
+            <div class="col-sm-12">
+
+                <h2 class="font-alt m-t-0 m-b-20">About Agatha Belaya</h2>
+                <p>
+                    Agatha Belaya, a graduate of the renowned St. Petersburg Academic Institute of Painting, Sculpture, and Architecture named after
+                    Ilya E. Repin, lives and works in St.Petersburg, Russia. In 1999, as a fifth-year mural painting major,
+                    Agatha was chosen to join the group of artists painting murals in the newly restored Cathedral of Christ the Savior
+                    in Moscow, the cathedral of great symbolic importance for the post-communist Russia. 
+                    Agatha has received numerous awards at various art exhibitions in Russia and abroad.
+
+            </div>
+            <!-- /ABOUT ARTIST -->
+        </div>
+    </div>
+
+    <div class="container">
+        <h2 class="font-alt m-t-0 m-b-20">Works</h2>
+
+        <!-- FILTER -->
+        <div class="row">
+
+            <div class="col-sm-12">
+                <ul id="filters" class="filters font-alt">
+                    <li><a href="#" data-filter="*" class="current">All<sup><small>.@Model.Paintings.Count()</small></sup></a></li>
+                    @foreach(var gallery in Model.Galleries)
+                        {
+                        <li><a href="#" data-filter=".@gallery.Id" class="@gallery.Id">@gallery.Name<sup><small>.@gallery.Count</small></sup></a></li>
+                        }
+                </ul>
+            </div>
+
+        </div>
+        <!-- /FILTER -->
+        <!-- WORKS GRID -->
+        <div class="row">
+
+            <div id="works-grid" class="works-grid works-hover-w">
+
+                <!-- DO NOT DELETE THIS DIV -->
+                <div class="grid-sizer"></div>
+
+                @foreach(var painting in Model.Paintings)
+                {
+                    <div class="work-item gallery-@painting.Gallery.Id">
+                        <a href="painting/details/@painting.Painting.Id" 
+                           class="gallery" 
+                           title="@painting.Painting.Name" 
+                           data-mfp-src="@Html.PaintingImageUrl(painting.Painting, "large")">
+                            <img src="@Html.PaintingImageUrl(painting.Painting, "small")" alt=""/>
+                            <div class="work-caption font-alt">
+                                <h3 class="work-title">@painting.Painting.Name</h3>
+                                <div class="work-descr">
+                                    @painting.Painting.Description
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                }
+            </div>
+
+        </div>
+        <!-- /WORKS GRID -->
+    </div>
+
+</section>
+<!-- /PORTFOLIO -->

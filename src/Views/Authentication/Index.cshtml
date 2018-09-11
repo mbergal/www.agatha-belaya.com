@@ -1,0 +1,19 @@
+﻿@model dynamic
+
+@{
+    ViewBag.Title = "title";
+}
+
+
+<h2>Authentication</h2>
+
+
+
+<form method="POST" action="@Url.Action( "Authenticate", "Authentication" )">
+    Step 1: <input type="submit" value="Authenticate"/>
+</form>
+
+<form method="POST" action="@Url.Action( "SaveCode", "Authentication" )">
+    Step 2: <input type="text" name="code" id="code"/>
+    <input type="submit" value="Save Code"/>
+</form>
