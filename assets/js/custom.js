@@ -208,7 +208,6 @@
           /* ---------------------------------------------- */
 
         $("a", filters).on("click", function() {
-            debugger;
             var selector = $(this).attr("data-filter");
 
             $(".current", filters).removeClass("current");

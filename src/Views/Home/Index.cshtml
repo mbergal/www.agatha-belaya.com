@@ -54,7 +54,7 @@
                     <li><a href="#" data-filter="*" class="current">All<sup><small>.@Model.Paintings.Count()</small></sup></a></li>
                     @foreach(var gallery in Model.Galleries)
                         {
-                        <li><a href="#" data-filter=".@gallery.Id" class="@gallery.Id">@gallery.Name<sup><small>.@gallery.Count</small></sup></a></li>
+                        <li><a href="#" data-filter=".gallery-@gallery.Id" class="@gallery.Id">@gallery.Name<sup><small>.@gallery.Count</small></sup></a></li>
                         }
                 </ul>
             </div>
