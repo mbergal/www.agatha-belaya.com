@@ -1,8 +1,8 @@
 <?php
 
 	// Mail settings
-	$to      = "web-master72@yandex.ru";
-	$subject = "Vortex";
+	$to      = "info@agatha-belaya.com";
+	$subject = "Inquiry";
 
 	// You can put here your email
 	$header = "From: noreply@vortex.com\r\n";
