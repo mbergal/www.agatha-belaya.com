@@ -13,7 +13,7 @@ function Bootstrap()
 
     Write-Host "Args: ", $commandLineArgs
 
-    .$psakeDir\tools\psake.ps1 $PSCommandPath $commandLineArgs -ScriptPath $psakeDir\tools
+    .$psakeDir\tools\psake\psake.cmd $PSCommandPath $commandLineArgs -ScriptPath $psakeDir\tools\psake
     if ($psake.build_success -eq $false) { exit 1 } else { exit 0 }
     }
 
