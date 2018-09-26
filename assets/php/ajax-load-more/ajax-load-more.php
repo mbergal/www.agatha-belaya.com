@@ -162,7 +162,7 @@
 		<!-- /NAVIGATION -->
 
 		<!-- HERO -->
-		<section id="hero" class="module-hero module-parallax module-full-height bg-light-30" data-background="assets/images/section-4.jpg">
+		<section id="hero" class="module-hero module-parallax module-full-height" data-background="assets/images/section-4.jpg">
 
 			<!-- HERO TEXT -->
 			<div class="hero-caption">
