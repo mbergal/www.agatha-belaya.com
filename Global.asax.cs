@@ -1,4 +1,6 @@
 ﻿using System;
+using System.IO;
+using System.Web.Hosting;
 using System.Web.Mvc;
 using System.Web.Routing;
 using Agatha.Services;
@@ -34,9 +36,10 @@ namespace Agatha {
             RouteConfig.Register(RouteTable.Routes);
             FilterConfig.Register(GlobalFilters.Filters);
 
+            var logPath = Path.Combine(HostingEnvironment.MapPath("~/App_Data"), "log.txt");
             Log.Logger = new LoggerConfiguration()
                 .MinimumLevel.Debug()
-                .WriteTo.File(@"C:\Users\misha_000\Projects\agathabelaya3\App_Data\log.txt")
+                .WriteTo.File(logPath)
                 .WriteTo.Console()
                 .CreateLogger();
 
@@ -53,6 +56,8 @@ namespace Agatha {
         }
 
         protected void Application_Error(object sender, EventArgs e) {
+            var ex = Server.GetLastError();
+            Log.Logger.Error(ex, ex.Message);
         }
 
         protected void Session_End(object sender, EventArgs e) {
