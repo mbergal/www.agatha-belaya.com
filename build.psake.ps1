@@ -46,6 +46,6 @@ task Serve -depends Build `
 
 task Download -depends Serve `
     {
-    . "$toolsDir\wget.exe" http://localhost:8080/ -m -r -k  -E -H -K -p --adjust-extension --span-hosts --convert-links --backup-converted --page-requisites --directory-prefix="$deployDir" >build.log # 2>&1 
+    . "$toolsDir\wget.exe" http://localhost:8080/ -D localhost -m -r -k  -E -H -K -p --adjust-extension --span-hosts --convert-links --backup-converted --page-requisites   --directory-prefix="$deployDir" >build.log # 2>&1 
     Get-Process iisexpress -ErrorAction SilentlyContinue | Stop-Process
     }
