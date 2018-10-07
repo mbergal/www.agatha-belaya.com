@@ -13,7 +13,7 @@ function Bootstrap()
 
     Write-Host "Args: ", $commandLineArgs
 
-    .$psakeDir\tools\psake.ps1 $PSCommandPath $commandLineArgs -ScriptPath $psakeDir\tools
+    .$psakeDir\tools\psake\psake.cmd $PSCommandPath $commandLineArgs -ScriptPath $psakeDir\tools\psake
     if ($psake.build_success -eq $false) { exit 1 } else { exit 0 }
     }
 
@@ -34,18 +34,18 @@ task default -depends Serve
 
 task Build `
     {
-    msbuild15 agatha2.csproj 
+    # msbuild15 agatha2.csproj 
     }
 
 task Serve -depends Build `
     {
     Get-Process iisexpress -ErrorAction SilentlyContinue | Stop-Process
-    . start (Join-Path ${env:ProgramFiles(x86)} "IIS Express\iisexpress") /path:C:\Users\misha_000\Projects\agathabelaya3\ 
+    . start (Join-Path ${env:ProgramFiles(x86)} "IIS Express\iisexpress") /path:$PSScriptRoot    
     Start-Sleep -s 3
     }
 
 task Download -depends Serve `
     {
-    . "$toolsDir\wget.exe" http://localhost:8080/ -m -r -k --directory-prefix="$deployDir" >build.log # 2>&1 
+    . "$toolsDir\wget.exe" http://localhost:8080/ -D localhost -m -r -k  -E -H -K -p --adjust-extension --span-hosts --convert-links --backup-converted --page-requisites   --directory-prefix="$deployDir" >build.log # 2>&1 
     Get-Process iisexpress -ErrorAction SilentlyContinue | Stop-Process
     }
